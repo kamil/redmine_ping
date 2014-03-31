@@ -1,0 +1,1 @@
+get 'notify', :to => 'notify#index'
