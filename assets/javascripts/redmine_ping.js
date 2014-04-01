@@ -35,6 +35,11 @@ RedminePing = (function() {
             this.setIssues(parseInt(localStorage.currentIssues));
         }
 
+        this.issuesCount = function ( data ) {
+            this.setIssues(parseInt(data.count));
+            console.log('issuesCount change from the master',data.count)
+        };
+
 
 
         var self = this;
@@ -65,6 +70,7 @@ RedminePing = (function() {
 
         if (issuesCount != this.currentIssues) {
             this.currentIssues = issuesCount;
+            this.wc.broadcast( 'issuesCount', { count: issuesCount });
 
             localStorage.currentIssues = this.currentIssues;
 
